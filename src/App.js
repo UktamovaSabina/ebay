@@ -1,24 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes } from 'react-router-dom';
+import Footer from './components/footer/Footer';
+import Header from './components/header/Header';
+import Cart from './routes/cart/Cart';
+import Category from './routes/category/Category';
+import Home from './routes/home';
+import LikedProducts from './routes/liked-products/LikedProducts';
+import Register from './routes/register/Register';
+import SearchedProducts from './routes/search/SearchedProducts';
+import Sign from './routes/sign/Sign';
+import SingleProduct from './routes/single-product/SingleProduct';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header />
+      <main>
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/category' element={<Category />} />
+          <Route path='/searched' element={<SearchedProducts />} />
+          <Route path='/favourites' element={<LikedProducts />} />
+          <Route path='/cart' element={<Cart />} />
+          <Route path='/product/:id' element={<SingleProduct />} />
+          <Route path='/register' element={<Register />} />
+          <Route path='/sign' element={<Sign />} />
+        </Routes>
+      </main>
+      <Footer />
+    </>
   );
 }
 
